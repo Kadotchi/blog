@@ -1,16 +1,17 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Footer from 'components/footer'
+import Header from 'components/header'
+import Hero from 'components/hero'
 
 export default function Home() {
   return (
-    <div>
-      <header>HEADER</header>
+    <>
+      <Header />
+
       <main>
-        <h1>CUBE</h1>
-        <p>アウトプットしていくサイト</p>
+        <Hero />
       </main>
-      <footer>FOOTER</footer>
-    </div>
+
+      <Footer />
+    </>
   )
 }
