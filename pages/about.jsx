@@ -1,7 +1,7 @@
 import Contact from 'components/Contact'
 import Container from 'components/Container'
 import Hero from 'components/Hero'
-import PostBody from 'components/PostBody'
+import PostBody from 'components/Post-Body'
 
 export default function About() {
   return (
