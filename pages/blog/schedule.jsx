@@ -1,3 +1,4 @@
+import Image from 'next/legacy/image'
 import { getPostBySlug } from 'lib/api'
 import Container from 'components/Container'
 import PostHeader from 'components/Post-Header'
@@ -13,6 +14,17 @@ export default function Schedule({
     <Container>
       <article>
         <PostHeader title={title} subtitle="Blog Article" publish={publish} />
+
+        <figure>
+          <Image
+            src={eyecatch.url}
+            alt=""
+            layout="responsive"
+            width={eyecatch.width}
+            height={eyecatch.height}
+            sizes="(min-width: 1152px) 1152px, 100vw"
+          />
+        </figure>
       </article>
     </Container>
   )
