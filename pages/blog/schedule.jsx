@@ -1,7 +1,15 @@
 import Image from 'next/legacy/image'
+
 import { getPostBySlug } from 'lib/api'
 import Container from 'components/Container'
 import PostHeader from 'components/Post-Header'
+import PostBody from 'components/Post-Body'
+import {
+  TwoColumn,
+  TwoColumnMain,
+  TwoColumnSidebar,
+} from 'components/Two-Column'
+import ConvertBody from 'components/Convert-Body'
 
 export default function Schedule({
   title,
@@ -25,6 +33,15 @@ export default function Schedule({
             sizes="(min-width: 1152px) 1152px, 100vw"
           />
         </figure>
+
+        <TwoColumn>
+          <TwoColumnMain>
+            <PostBody>
+              <ConvertBody contentHTML={content} />
+            </PostBody>
+          </TwoColumnMain>
+          <TwoColumnSidebar></TwoColumnSidebar>
+        </TwoColumn>
       </article>
     </Container>
   )
