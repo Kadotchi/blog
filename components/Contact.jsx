@@ -1,5 +1,5 @@
 import styles from 'styles/contact.module.css'
-import Social from './Social'
+import Social from 'components/Social'
 
 export default function Contact() {
   return (
