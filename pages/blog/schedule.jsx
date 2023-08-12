@@ -1,5 +1,5 @@
 import Image from 'next/legacy/image'
-// import { getPlaiceholder } from 'plaiceholder'
+import { getPlaiceholder } from 'plaiceholder'
 
 import { getPostBySlug } from 'lib/api'
 import Container from 'components/Container'
@@ -17,6 +17,7 @@ import Meta from 'components/Meta'
 
 // ローカルの代替アイキャッチ画像
 import { eyecatchLocal } from 'lib/constants'
+import { getImageBuffer } from 'lib/getImageBuffer'
 
 export default function Schedule({
   title,
@@ -47,9 +48,9 @@ export default function Schedule({
             width={eyecatch.width}
             height={eyecatch.height}
             sizes="(min-width: 1152px) 1152px, 100vw"
-            // priority
-            // placeholder="blur"
-            // blurDataURL={eyecatch.blurDataURL}
+            priority
+            placeholder="blur"
+            blurDataURL={eyecatch.blurDataURL}
           />
         </figure>
 
@@ -70,6 +71,7 @@ export default function Schedule({
 
 export async function getStaticProps() {
   const slug = 'micro'
+  // const slug = 'schedule'
 
   const post = await getPostBySlug(slug)
 
@@ -77,8 +79,9 @@ export async function getStaticProps() {
 
   const eyecatch = post.eyecatch ?? eyecatchLocal
 
-  // const { base64 } = await getPlaiceholder(eyecatch.url)
-  // eyecatch.blurDataURL = base64
+  const imageBuffer = await getImageBuffer(eyecatch.url)
+  const { base64 } = await getPlaiceholder(imageBuffer)
+  eyecatch.blurDataURL = base64
 
   return {
     props: {
