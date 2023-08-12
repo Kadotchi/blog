@@ -1,7 +1,7 @@
 import Image from 'next/legacy/image'
 import { getPlaiceholder } from 'plaiceholder'
 
-import { getPostBySlug } from 'lib/api'
+import { getPostBySlug, getAllSlugs } from 'lib/api'
 import Container from 'components/Container'
 import PostHeader from 'components/Post-Header'
 import PostBody from 'components/Post-Body'
@@ -19,7 +19,7 @@ import Meta from 'components/Meta'
 import { eyecatchLocal } from 'lib/constants'
 import { getImageBuffer } from 'lib/getImageBuffer'
 
-export default function Schedule({
+export default function Post({
   title,
   publish,
   content,
@@ -69,9 +69,17 @@ export default function Schedule({
   )
 }
 
-export async function getStaticProps() {
-  const slug = 'micro'
-  // const slug = 'schedule'
+export async function getStaticPaths() {
+  const allSlugs = await getAllSlugs()
+
+  return {
+    paths: allSlugs.map(({ slug }) => `/blog/${slug}`),
+    fallback: false,
+  }
+}
+
+export async function getStaticProps(context) {
+  const slug = context.params.slug
 
   const post = await getPostBySlug(slug)
 
