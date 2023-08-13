@@ -14,6 +14,7 @@ import ConvertBody from 'components/Convert-Body'
 import PostCategories from 'components/Post-Categories'
 import { extractText } from 'lib/extract-text'
 import Meta from 'components/Meta'
+import Pagination from 'components/Pagination'
 
 // ローカルの代替アイキャッチ画像
 import { eyecatchLocal } from 'lib/constants'
@@ -67,12 +68,13 @@ export default function Post({
             <PostCategories categories={categories} />
           </TwoColumnSidebar>
         </TwoColumn>
-        <div>
-          {prevPost.title} {prevPost.slug}
-        </div>
-        <div>
-          {nextPost.title} {nextPost.slug}
-        </div>
+
+        <Pagination
+          prevText={prevPost.title}
+          prevUrl={prevPost.slug}
+          nextText={nextPost.title}
+          nextUrl={nextPost.slug}
+        />
       </article>
     </Container>
   )
