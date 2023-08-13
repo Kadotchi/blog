@@ -18,6 +18,7 @@ import Meta from 'components/Meta'
 // ローカルの代替アイキャッチ画像
 import { eyecatchLocal } from 'lib/constants'
 import { getImageBuffer } from 'lib/getImageBuffer'
+import { prevNextPost } from 'lib/prev-next-post'
 
 export default function Post({
   title,
@@ -26,6 +27,8 @@ export default function Post({
   eyecatch,
   categories,
   description,
+  prevPost,
+  nextPost,
 }) {
   return (
     <Container>
@@ -64,6 +67,12 @@ export default function Post({
             <PostCategories categories={categories} />
           </TwoColumnSidebar>
         </TwoColumn>
+        <div>
+          {prevPost.title} {prevPost.slug}
+        </div>
+        <div>
+          {nextPost.title} {nextPost.slug}
+        </div>
       </article>
     </Container>
   )
@@ -91,6 +100,9 @@ export async function getStaticProps(context) {
   const { base64 } = await getPlaiceholder(imageBuffer)
   eyecatch.blurDataURL = base64
 
+  const allSlugs = await getAllSlugs()
+  const [prevPost, nextPost] = prevNextPost(allSlugs, slug)
+
   return {
     props: {
       title: post.title,
@@ -99,6 +111,8 @@ export async function getStaticProps(context) {
       eyecatch: eyecatch,
       categories: post.categories,
       description: description,
+      prevPost: prevPost,
+      nextPost: nextPost,
     },
   }
 }
