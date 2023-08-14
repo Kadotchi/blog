@@ -12,7 +12,6 @@ export default function Pagination({
   nextText = '',
   nextUrl = '',
 }) {
-  console.log(styles)
   return (
     <ul className={styles.flexContainer}>
       {prevText && prevUrl && (
