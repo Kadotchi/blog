@@ -46,6 +46,7 @@ export default function Post({
 
         <figure>
           <Image
+            key={eyecatch.url}
             src={eyecatch.url}
             alt=""
             layout="responsive"
