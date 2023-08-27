@@ -1,3 +1,27 @@
+/* デスクトップ */
+@media (min-width: 768px) {
+  .btn {
+    display: none;
+  }
+
+  .list {
+    display: flex;
+    gap: 2em;
+  }
+}
+
+/* モバイル */
+@media (max-width: 767px) {
+  /* ボタン */
+  .close .btn {
+    color: blue;
+  }
+
+  .open .btn {
+    color: red;
+  }
+}
+
 .list {
   display: flex;
   gap: 2em;
