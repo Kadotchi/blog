@@ -1,5 +1,6 @@
 import Container from 'components/Container'
 import PostHeader from 'components/Post-Header'
+import Meta from 'components/Meta'
 import { getAllCategories, getAllPostsByCategory } from 'lib/api'
 import { getImageBuffer } from 'lib/getImageBuffer'
 import { getPlaiceholder } from 'plaiceholder'
@@ -11,6 +12,7 @@ import Posts from 'components/Posts'
 export default function Category({ name, posts }) {
   return (
     <Container>
+      <Meta pageTitle={name} pageDesc={`${name}に関する記事`} />
       <PostHeader title={name} subtitle="Blog Category" />
       <Posts posts={posts} />
     </Container>
