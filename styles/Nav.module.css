@@ -13,12 +13,39 @@
 /* モバイル */
 @media (max-width: 767px) {
   /* ボタン */
+  .btn {
+    position: relative;
+    z-index: 200;
+  }
+
   .close .btn {
     color: blue;
   }
 
   .open .btn {
     color: red;
+  }
+
+  /* メニュー（オーバーレイ） */
+  .list {
+    position: fixed;
+    inset: 0 -100% 0 100%;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--white);
+    transition: transform 0.4s;
+  }
+
+  .open .list {
+    transform: translateX(-100%);
+  }
+
+  /* メニュー（オーバーレイ内の配置） */
+  .list {
+    display: grid;
+    gap: 40px;
+    place-content: center;
+    text-align: center;
   }
 }
 
