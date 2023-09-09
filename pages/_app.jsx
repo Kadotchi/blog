@@ -6,9 +6,22 @@ import * as gtag from 'lib/gtag'
 // Font Awesomeの設定
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { config } from '@fortawesome/fontawesome-svg-core'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 config.autoAddCss = false
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter()
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      gtag.pageview(url)
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
+
   return (
     <>
       <Script
