@@ -38,7 +38,7 @@ export async function getStaticProps(context) {
 
   for (const post of posts) {
     if (!post.hasOwnProperty('eyecatch')) {
-      post.eyecatchLocal = eyecatchLocal
+      post.eyecatch = eyecatchLocal
     }
     const imageBuffer = await getImageBuffer(post.eyecatch.url)
     const { base64 } = await getPlaiceholder(imageBuffer)
