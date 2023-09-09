@@ -1,6 +1,6 @@
 import Container from 'components/Container'
-import Logo from 'components/logo'
-import Nav from 'components/nav'
+import Logo from 'components/Logo'
+import Nav from 'components/Nav'
 import styles from 'styles/Header.module.css'
 
 export default function Header() {

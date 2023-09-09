@@ -1,5 +1,5 @@
 import Container from 'components/Container'
-import Logo from 'components/logo'
+import Logo from 'components/Logo'
 import styles from 'styles/Footer.module.css'
 import Social from 'components/Social'
 
